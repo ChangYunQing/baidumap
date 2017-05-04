@@ -1,0 +1,1112 @@
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+    *{
+        padding: 0;
+        margin: 0;
+    }
+        body, html,li {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";list-style-type: none;}
+.table_card_2 {
+    width: 300px;
+    height: 480px;
+    margin: 0 auto;
+    margin-top: 37px;
+    border: 1px solid #999;
+    position: absolute;
+    left: 888px;
+    top: -25px;
+    background: #fff;
+}
+
+.table_card_2 .tab_2 {
+    height: 60px;
+    font-size: 14px;
+    cursor: pointer;
+    text-align: center;
+    line-height: 60px;
+    font-size: 14px;
+    background: #ececec;
+}
+
+.table_card_2 .tab_2 li {
+    float: left;
+    width: 60px;
+    height: 60px;
+    color: #5a646c;
+    cursor: pointer;
+    border-bottom: 1px solid #999;
+}
+
+
+.table_card_2 .tab_2 li.active_2 {
+    color: #ff6600;
+    cursor: pointer;
+    background: #fff;
+    border-right: 1px solid #999;
+    border-left: 1px solid #999;
+    box-sizing: border-box;
+    border-bottom: 0;
+}
+
+.table_card_2 .tabCon_2 .checkTab_2 {
+    display: none;
+    width: 300px;
+    height: 300px;
+    color: #5a646c;
+}
+
+.table_card_2 .tabCon_2 .on_2 {
+    display: block;
+    width: 300px;
+    height: 300px;
+    color: #5a646c;
+}
+.tabCon_3,.tabCon_4,.tabCon_5,.tabCon_6,.tabCon_7{
+    width: 300px;
+    height: 373px;
+    overflow-y: scroll;overflow-x: hidden;
+}
+.table_card_3 .tabCon_3 .checkTab_3, .table_card_4 .tabCon_4 .checkTab_4, .table_card_5 .tabCon_5 .checkTab_5, .table_card_6 .tabCon_6 .checkTab_6, .table_card_7 .tabCon_7 .checkTab_7 {
+    display: none;
+    width: 300px;
+    height: 300px;
+    color: #5a646c;
+}
+
+.table_card_3 .tabCon_3 .on_3, .table_card_4 .tabCon_4 .on_4, .table_card_5 .tabCon_5 .on_5, .table_card_6 .tabCon_6 .on_6, .table_card_7 .tabCon_7 .on_7 {
+    display: block;
+    width: 300px;
+    height: 300px;
+    color: #5a646c;
+}
+
+.table_card_3 .tab_3 ,.table_card_4 .tab_4,.table_card_5 .tab_5,.table_card_6 .tab_6,.table_card_7 .tab_7{
+    height: 30px;
+    width: 300px;
+    font-size: 14px;
+    border-bottom: 1px #ccc solid;
+    cursor: pointer;
+    margin-top: 15px;
+    float: left;
+}
+
+.table_card_3 .tab_3 li, .table_card_4 .tab_4 li, .table_card_5 .tab_5 li, .table_card_6 .tab_6 li, .table_card_7 .tab_7 li {
+    float: left;
+    height: 27px;
+    width: 60px;
+    color: #5a646c;
+    text-align: center;
+    margin-left: 15px; 
+}
+
+
+.table_card_3 .tab_3 li.active_3, .table_card_4 .tab_4 li.active_4, .table_card_5 .tab_5 li.active_5, .table_card_6 .tab_6 li.active_6, .table_card_7 .tab_7 li.active_7 {
+    color: #f60;
+    cursor: pointer;
+    border-bottom: 3px solid #f60;
+}
+.nearby{
+    padding: 0 20px;
+    width: 260px;
+    height: 60px;
+    font-size: 12px;
+    float: left;
+    margin-top: 15px;
+    border-bottom: 1px solid #ececec;
+    cursor: pointer;
+}
+.title{
+    float: left;
+    margin-left: 15px;
+    font-weight: bold;
+    width: 150px;
+    height: 15px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.distance{
+    float: right;
+    width: 60px;
+}
+.address{
+    float: left;
+    margin-top: 15px;
+    width: 190px;
+    height: 15px;
+    text-align: left;
+    margin-left: 15px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.arrowIcon{
+    width: 10px;
+    height: 10px;
+    background: url(arr.png) no-repeat;
+    float: left;
+    margin-top: 4px;
+    margin-left: -15px;
+}
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6ChlLFSSK1AGffapHmiBkca5FmamfUG2"></script>
+    <title>地图</title>  
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>  
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+</head>  
+<body>  
+<div id="divMap" style="width: 1200px;height: 520px;margin: 0 auto;margin-left:5px; font-size:14px;border:solid 1px #999"></div>  
+            <!--# 选项卡 -->
+            <div class="table_card_2">
+                <ul class="tab_2">
+                    <li class="active_2" style="border-left :0" id="traffic">交通</li>
+                    <li id="edu">教育</li>
+                    <li id="medical">医疗</li>
+                    <li id="shopping">购物</li>
+                    <li style="border-right:0 " id="life">生活</li>
+                </ul>
+                <div class="tabCon_2">
+                    <!--交通-->
+                    <div class="on_2 checkTab_2">
+                        <div class="table_card_3">
+                            <ul class="tab_3">
+                                <li class="active_3" id="subway">地铁</li>
+                                <li id="bus">公交</li>
+                            </ul>
+                        </div>
+                        <div class="tabCon_3">
+                            <div class="on_3 checkTab_3">
+                                <ul id="txtSubway" ></ul>
+                           </div>
+                            <div class="checkTab_3">
+                                <ul id="txtBus"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--教育-->
+                    <div class="checkTab_2">
+                        <div class="table_card_4">
+                            <ul class="tab_4">
+                                <li class="active_4" id="kindergarten">幼儿园</li>
+                                <li id="primarySchool">小学</li>
+                                <li id="middleSchool">中学</li>
+                                <li id="college">大学</li>
+                            </ul>
+                        </div>
+                        <div class="tabCon_4">
+                            <div class="on_4 checkTab_4">
+                                <ul id="txtkindergarten" ></ul>
+                            </div>
+                            <div class="checkTab_4">
+                                <ul id="txtprimarySchool"></ul>
+                            </div>
+                            <div class="checkTab_4">
+                                <ul id="txtmiddleSchool"></ul>
+                            </div>
+                            <div class="checkTab_4">
+                                <ul id="txtcollege"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--医疗-->
+                    <div class="checkTab_2">
+                        <div class="table_card_5">
+                            <ul class="tab_5">
+                                <li class="active_5" id="hospital">医院</li>
+                                <li id="pharmacy">药店</li>
+                            </ul>
+                        </div>
+                        <div class="tabCon_5">
+                            <div class="on_5 checkTab_5">
+                                <ul id="txthospital" ></ul>
+                            </div>
+                            <div class=" checkTab_5">
+                                <ul id="txtpharmacy"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--购物-->
+                    <div class="checkTab_2">
+                        <div class="table_card_6">
+                            <ul class="tab_6">
+                                <li class="active_6" id="shoppingMall">商场</li>
+                                <li id="superMarket">超市</li>
+                                <li id="market">市场</li>
+                            </ul>
+                        </div>
+                        <div class="tabCon_6">
+                            <div class="on_6 checkTab_6">
+                                <ul id="txtshoppingMall" ></ul>
+                            </div>
+                            <div class="checkTab_6">
+                                <ul id="txtsuperMarket"></ul>
+                            </div>
+                            <div class="checkTab_6">
+                                <ul id="txtmarket"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!--生活-->
+                    <div class="checkTab_2">
+                        <div class="table_card_7">
+                            <ul class="tab_7">
+                                <li class="active_7" id="park">公园</li>
+                                <li id="bank">银行</li>
+                                <li id="atm">ATM</li>
+                                <li id="restaurant">饭店</li>
+                            </ul>
+                        </div>
+                        <div class="tabCon_7">
+                            <div class="on_7 checkTab_7">
+                                <ul id="txtpark" ></ul>
+                            </div>
+                            <div class="checkTab_7">
+                                <ul id="txtbank"></ul>
+                            </div>
+                            <div class="checkTab_7">
+                                <ul id="txtatm"></ul>
+                            </div>
+                            <div class="checkTab_7">
+                                <ul id="txtrestaurant"></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--#@ 选项卡 -->
+    <script type="text/javascript">  
+    function tab_2(e){
+        $(".tab_2 li").click(function(){
+            $(".tab_2 li").eq($(this).index()).addClass("active_2").siblings().removeClass("active_2");
+            $(".tabCon_2 .checkTab_2").hide().eq($(this).index()).show();
+        })
+    }tab_2();
+    function tab_3(e){
+        $(".tab_3 li").click(function(){
+            $(".tab_3 li").eq($(this).index()).addClass("active_3").siblings().removeClass("active_3");
+            $(".tabCon_3 .checkTab_3").hide().eq($(this).index()).show();
+        })
+    }tab_3();
+     function tab_4(e){
+        $(".tab_4 li").click(function(){
+            $(".tab_4 li").eq($(this).index()).addClass("active_4").siblings().removeClass("active_4");
+            $(".tabCon_4 .checkTab_4").hide().eq($(this).index()).show();
+        })
+    }tab_4();
+    function tab_5(e){
+        $(".tab_5 li").click(function(){
+            $(".tab_5 li").eq($(this).index()).addClass("active_5").siblings().removeClass("active_5");
+            $(".tabCon_5 .checkTab_5").hide().eq($(this).index()).show();
+        })
+    }tab_5();
+    function tab_6(e){
+        $(".tab_6 li").click(function(){
+            $(".tab_6 li").eq($(this).index()).addClass("active_6").siblings().removeClass("active_6");
+            $(".tabCon_6 .checkTab_6").hide().eq($(this).index()).show();
+        })
+    }tab_6();
+    function tab_7(e){
+        $(".tab_7 li").click(function(){
+            $(".tab_7 li").eq($(this).index()).addClass("active_7").siblings().removeClass("active_7");
+            $(".tabCon_7 .checkTab_7").hide().eq($(this).index()).show();
+        })
+    }tab_7();
+
+    var map = new BMap.Map("divMap");//创建地图  
+    var point = new BMap.Point(116.404, 39.915);
+    map.centerAndZoom(point, 15);
+    function labelTxt(){
+        var opts = {
+          position : point,    // 指定文本标注所在的地理位置
+          offset   : new BMap.Size(-43, -80)    //设置文本偏移量
+        }
+        var label = new BMap.Label("您当前的位置", opts);  // 创建文本标注对象
+            label.setStyle({
+                 color : "#ff6600",
+                 fontSize : "12px",
+                 height : "25px",
+                 lineHeight : "25px",
+                 fontFamily:"微软雅黑",
+                 width: "80px",
+                 textAlign: "center",
+                 border: "1px solid #e1e2e2"
+             });
+        map.addOverlay(label);
+    }
+    $(document).ready(function(){
+        if($('.tabCon_3, .tabCon_4, .tabCon_5, .tabCon_6, .tabCon_7').css('height') <= '373px'){
+            $('.tabCon_3, .tabCon_4, .tabCon_5, .tabCon_6, .tabCon_7').css('overflow-y','visible')
+        }
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        // var myIcon = new BMap.Icon("http://developer.baidu.com/map/jsdemo/img/fox.gif", new BMap.Size(300,157));
+        // var marker2 = new BMap.Marker(point,{icon:myIcon});  // 创建标注
+        // map.addOverlay(marker2);
+        map.addOverlay(marker);  
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE); 
+        var s=$("#subway").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(var j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)  
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)  
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtSubway').append(str)
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+
+    /***************************交通***************************/
+    $('#traffic').on('click',function tra(){
+        $('#txtSubway').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker);  
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE); 
+        var s=$("#subway").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(var j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)  // 创建点坐标A--大渡口区
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)  // 创建点坐标B--江北区
+                        console.log('从point到天安门东的距离是：'+(map.getDistance(pointA,pointB)).toFixed(0)+' 米。');
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtSubway').append(str)
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    });  
+    $('#subway').on('click',function sub(){
+        $('#txtSubway').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker);  
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE); 
+        var s=$("#subway").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(var j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)  // 创建点坐标A--大渡口区
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)  // 创建点坐标B--江北区
+                        console.log('从point到天安门东的距离是：'+(map.getDistance(pointA,pointB)).toFixed(0)+' 米。');
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtSubway').append(str)
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    });  
+    $('#bus').on('click',function bus(){  
+        $('#txtBus').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#bus").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtBus').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+
+    /***************************教育***************************/
+    $('#edu').on('click',function edu(){  
+        $('#txtkindergarten').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#kindergarten").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtkindergarten').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#kindergarten').on('click',function kindergarten(){  
+        $('#txtkindergarten').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#kindergarten").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtkindergarten').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#primarySchool').on('click',function primarySchool(){  
+        $('#txtprimarySchool').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#primarySchool").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtprimarySchool').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#middleSchool').on('click',function middleSchool(){  
+        $('#txtmiddleSchool').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#middleSchool").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtmiddleSchool').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#college').on('click',function college(){  
+        $('#txtcollege').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#college").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtcollege').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+
+    /***************************医疗***************************/
+    $('#medical').on('click',function medical(){  
+        $('#txthospital').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#hospital").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txthospital').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#hospital').on('click',function college(){  
+        $('#txthospital').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#hospital").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txthospital').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#pharmacy').on('click',function college(){  
+        $('#txtpharmacy').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#pharmacy").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtpharmacy').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+
+
+    /***************************购物***************************/
+    $('#shopping').on('click',function shopping(){  
+        $('#txtshoppingMall').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#shoppingMall").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtshoppingMall').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#shoppingMall').on('click',function college(){  
+        $('#txtshoppingMall').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#shoppingMall").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtshoppingMall').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#superMarket').on('click',function college(){  
+        $('#txtsuperMarket').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#superMarket").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtsuperMarket').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#market').on('click',function college(){  
+        $('#txtmarket').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#market").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtmarket').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+
+
+    /***************************生活***************************/
+    $('#life').on('click',function life(){  
+        $('#txtpark').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#park").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtpark').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#park').on('click',function park(){  
+        $('#txtpark').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#park").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtpark').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#bank').on('click',function bank(){  
+        $('#txtbank').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#bank").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtbank').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#atm').on('click',function atm(){  
+        $('#txtatm').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#atm").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtatm').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    $('#restaurant').on('click',function restaurant(){  
+        $('#txtrestaurant').empty();
+        map.clearOverlays(); //清除地图上所有标记
+        var point = new BMap.Point(116.404, 39.915);
+        map.centerAndZoom(point, 15);
+        var marker = new BMap.Marker(point);  // 创建标注
+        map.addOverlay(marker); 
+        labelTxt();
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
+        var s=$("#atm").html(); 
+        var ls = new BMap.LocalSearch(point);
+        ls.searchNearby(s,point,1200); 
+        var i=1;  
+        ls.setSearchCompleteCallback(function(rs){  
+            if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
+                    for(j=0;j<rs.getCurrentNumPois();j++)  
+                    {  
+                        var poi=rs.getPoi(j);
+                        console.log(poi.title);
+                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
+                        var pointA = new BMap.Point(116.404, 39.915)
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var str = '';
+                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
+                        str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
+                        $('#txtrestaurant').append(str)
+                        
+                    }  
+                    if(rs.getPageIndex!=rs.getNumPages())    
+          {    
+            ls.gotoPage(i);  
+            i=i+1;  
+          }  
+            }});
+    })
+    </script>  
+</body>  
+</html>
+
