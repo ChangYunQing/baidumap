@@ -1034,7 +1034,8 @@
           }  
             }});
     })
-    $('#atm').on('click',function atm(){  
+    $('#atm').on('click',function atm(){ 
+        window.stop(); 
         $('#txtatm').empty();
         map.clearOverlays(); //清除地图上所有标记
         var point = new BMap.Point(116.404, 39.915);
@@ -1071,6 +1072,7 @@
             }});
     })
     $('#restaurant').on('click',function restaurant(){  
+        window.stop();
         $('#txtrestaurant').empty();
         map.clearOverlays(); //清除地图上所有标记
         var point = new BMap.Point(116.404, 39.915);
@@ -1079,7 +1081,7 @@
         map.addOverlay(marker); 
         labelTxt();
         marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
-        var s = $("#atm").html(); 
+        var s = $("#restaurant").html(); 
         var labal = new BMap.LocalSearch(map, {renderOptions: {map: map, autoViewport: false}});
         console.log($('.BMap_noprint'));
         labal.searchNearby(s,point,1200);
@@ -1094,7 +1096,7 @@
                         var pointA = new BMap.Point(116.404, 39.915);
                         var pointB = new BMap.Point(poi.point.lng,poi.point.lat);
                         var str = '';
-                        str +=  '<li class="nearby" data-a="atm'+[j]+'"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<li class="nearby" data-restaurant="restaurant'+[j]+'"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
                         str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
                         str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
                         $('#txtrestaurant').append(str)
