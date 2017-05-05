@@ -318,7 +318,7 @@
     }tab_7();
 
     var map = new BMap.Map("divMap");//创建地图  
-    var point = new BMap.Point(116.404, 39.915);
+    var point = new BMap.Point(116.404, 39.915);  
     map.centerAndZoom(point, 15);
     function labelTxt(){
         var opts = {
@@ -1079,7 +1079,10 @@
         map.addOverlay(marker); 
         labelTxt();
         marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
-        var s=$("#atm").html(); 
+        var s = $("#atm").html(); 
+        var labal = new BMap.LocalSearch(map, {renderOptions: {map: map, autoViewport: false}});
+        console.log($('.BMap_noprint'));
+        labal.searchNearby(s,point,1200);
         var ls = new BMap.LocalSearch(point);
         ls.searchNearby(s,point,1200); 
         var i=1;  
@@ -1088,23 +1091,20 @@
                     for(j=0;j<rs.getCurrentNumPois();j++)  
                     {  
                         var poi=rs.getPoi(j);
-                        console.log(poi.title);
-                        map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
-                        var pointA = new BMap.Point(116.404, 39.915)
-                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
+                        var pointA = new BMap.Point(116.404, 39.915);
+                        var pointB = new BMap.Point(poi.point.lng,poi.point.lat);
                         var str = '';
-                        str +=  '<li class="nearby"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
+                        str +=  '<li class="nearby" data-a="atm'+[j]+'"><p class="title" title="'+poi.title+'">'+poi.title+'</p>';
                         str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
                         str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
                         $('#txtrestaurant').append(str)
-                        
                     }  
                     if(rs.getPageIndex!=rs.getNumPages())    
-          {    
-            ls.gotoPage(i);  
-            i=i+1;  
-          }  
-            }});
+                {    
+                    ls.gotoPage(i);  
+                    i=i+1;  
+            }  
+        }});
     })
     </script>  
 </body>  
