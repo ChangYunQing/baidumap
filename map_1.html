@@ -8,6 +8,16 @@
         padding: 0;
         margin: 0;
     }
+    .nearby_1{
+        width: 260px;
+        height: 60px;
+        font-size: 12px;
+        cursor: pointer;
+        position: absolute;
+        left: 10px;
+        top: 20px;
+        z-index: 99;
+    }
         body, html,li {width: 100%;height: 100%;margin:0;font-family:"微软雅黑";list-style-type: none;}
 .table_card_2 {
     width: 300px;
@@ -158,6 +168,7 @@
     <title>地图</title>  
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=1.2"></script>  
 <script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script src="map.js"></script>
 </head>  
 <body>  
 <div id="divMap" style="width: 1200px;height: 520px;margin: 0 auto;margin-left:5px; font-size:14px;border:solid 1px #999"></div>  
@@ -279,7 +290,7 @@
                 </div>
             </div>
             <!--#@ 选项卡 -->
-    <script type="text/javascript">  
+    <!-- <script type="text/javascript">  
     function tab_2(e){
         $(".tab_2 li").click(function(){
             $(".tab_2 li").eq($(this).index()).addClass("active_2").siblings().removeClass("active_2");
@@ -963,8 +974,9 @@
             }});
     })
     $('#park').on('click',function park(){  
-        $('#txtpark').empty();
         map.clearOverlays(); //清除地图上所有标记
+        window.stop();
+        $('#txtpark').empty();
         var point = new BMap.Point(116.404, 39.915);
         map.centerAndZoom(point, 15);
         var marker = new BMap.Marker(point);  // 创建标注
@@ -999,8 +1011,9 @@
             }});
     })
     $('#bank').on('click',function bank(){  
-        $('#txtbank').empty();
         map.clearOverlays(); //清除地图上所有标记
+        window.stop();
+        $('#txtbank').empty();
         var point = new BMap.Point(116.404, 39.915);
         map.centerAndZoom(point, 15);
         var marker = new BMap.Marker(point);  // 创建标注
@@ -1035,8 +1048,9 @@
             }});
     })
     $('#atm').on('click',function atm(){  
+        window.stop();
+        map.clearOverlays();
         $('#txtatm').empty();
-        map.clearOverlays(); //清除地图上所有标记
         var point = new BMap.Point(116.404, 39.915);
         map.centerAndZoom(point, 15);
         var marker = new BMap.Marker(point);  // 创建标注
@@ -1047,7 +1061,7 @@
         var ls = new BMap.LocalSearch(point);
         ls.searchNearby(s,point,1200); 
         var i=1;  
-        ls.setSearchCompleteCallback(function(rs){  
+        ls.setSearchCompleteCallback(function (rs){  
             if (ls.getStatus() == BMAP_STATUS_SUCCESS){  
                     for(j=0;j<rs.getCurrentNumPois();j++)  
                     {  
@@ -1061,7 +1075,6 @@
                         str +=  '<span class="distance"><i class="arrowIcon"></i>'+(map.getDistance(pointA,pointB)).toFixed(0)+'<b>米</b></span>';
                         str +=  '<p class="address" title="'+poi.address+'">'+poi.address+'</p></li>';
                         $('#txtatm').append(str)
-                        
                     }  
                     if(rs.getPageIndex!=rs.getNumPages())    
           {    
@@ -1071,15 +1084,16 @@
             }});
     })
     $('#restaurant').on('click',function restaurant(){  
-        $('#txtrestaurant').empty();
+        window.stop();
         map.clearOverlays(); //清除地图上所有标记
+        $('#txtrestaurant').empty();
         var point = new BMap.Point(116.404, 39.915);
         map.centerAndZoom(point, 15);
         var marker = new BMap.Marker(point);  // 创建标注
         map.addOverlay(marker); 
         labelTxt();
         marker.setAnimation(BMAP_ANIMATION_BOUNCE);  
-        var s=$("#atm").html(); 
+        var s=$("#restaurant").html(); 
         var ls = new BMap.LocalSearch(point);
         ls.searchNearby(s,point,1200); 
         var i=1;  
@@ -1088,7 +1102,6 @@
                     for(j=0;j<rs.getCurrentNumPois();j++)  
                     {  
                         var poi=rs.getPoi(j);
-                        console.log(poi.title);
                         map.addOverlay(new BMap.Marker(poi.point)); //如果查询到，则添加红色marke
                         var pointA = new BMap.Point(116.404, 39.915)
                         var pointB = new BMap.Point(poi.point.lng,poi.point.lat)
@@ -1106,7 +1119,7 @@
           }  
             }});
     })
-    </script>  
+    </script>   -->
 </body>  
 </html>
 
